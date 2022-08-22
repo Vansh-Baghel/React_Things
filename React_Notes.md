@@ -19,3 +19,9 @@
 ## Adding JS in HTML code
 * We use curly braces to insert any variable of JS inside the HTML code in JSX file itself. 
 
+## props
+* To link 2 different files to change a component we use the concept of props. 
+* Sometimes we might want to change certain **component** from different file and to link them we must pass an argument in the of first file function and need to specify the variable which we use in the second file. 
+* We create object and then access the value from key in the HTML in second file. 
+
+## 
