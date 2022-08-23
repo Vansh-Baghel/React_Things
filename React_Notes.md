@@ -24,4 +24,6 @@
 * Sometimes we might want to change certain **component** from different file and to link them we must pass an argument in the of first file function and need to specify the variable which we use in the second file. 
 * We create object and then access the value from key in the HTML in second file. 
 
-## 
+## Way to get date format in JS
+* **toLocalString** can be used to get the date and month.
+* **getFullYear** for year.
