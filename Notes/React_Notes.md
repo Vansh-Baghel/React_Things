@@ -38,9 +38,17 @@
 * To give mulitple classes to it , we need to store the classes in the variable and add **.className** with it which says that all the class mentioned will be added into the child variable. 
 
 ## useState in React
+* Always **import** it before use.
 * useState is one of the **hook** functions and we always use it inside any component but not inside any nested function or outside the component.
 * Whenever we use react , the execution of the files take place only once . Means whenever we want to update any file component (the function which we write) , it doesnt change it.
 * If we want to change anything in JS , we need our executer to go back to the file and read the component again .
 * **useState** here comes into picture , it accepts two arguments (oldName , newName) . The newName can be updated as a function where ever needed.
 * Use destructing of arrays in this to assign variable to both the outputs , one oldValue and second newValue.
 * We cannot update the value using the equal to sign because when we call it as a function then it says the executer to **rerun** the component , which we need.
+
+# Chp 6
+## Styled components
+* write **npm install --save styled-components** to use it.
+* Then **import** it in files and then we can use it.
+* Write all the CSS styles inside the **template literals** and use **&** before using any class or pseudo class.
+* Dont need to give primary class name, ie , first class name. For second class name u can specify it inside the place its used and also can use ternary operator to give its condition.
