@@ -53,3 +53,8 @@
 * Write all the CSS styles inside the **template literals** and use **&** before using any class, other HTML element or pseudo class.
 * Dont need to give primary class name, ie , first class name. For second class name u can specify it inside the place its used and also can use ternary operator to give its condition.
 * You can also directly use **media query** inside the curly braces of any class styling.
+
+## .module.css
+* Here we can use CSS styling in JS by importing the particular CSS file which is named as .module.css .
+* Search more if wanna learn.
+* 
