@@ -1,0 +1,20 @@
+.user {
+    font-size: bold;
+    color: brown;
+    margin: 2rem auto;  
+    max-width: 40rem;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.user ul{
+    padding: 1rem; 
+}
+
+.user li {
+    list-style-type: none;      
+    border: 1px solid #ccc;
+    padding: 1rem; 
+    width: fit-content;
+  }
