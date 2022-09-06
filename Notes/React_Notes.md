@@ -85,7 +85,10 @@
 * We use the data from that common file which acts as middle file between the two.
 * This helps us to maintain small components of a big file. 
 
-## Wrapper 
+## Wrapper & React.Fragment
 * We can create a file as wrapper class of any name which will only contain the **props.children** and nothing else.
 * Through this we can use adjacent wrapper classes .
 * Otherwise without this we couldn't have used adjacent wrapper classes.
+* **React.Fragment** is another way to wrap two or more wrapper classes.
+
+
