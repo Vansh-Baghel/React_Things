@@ -92,4 +92,9 @@
 * **React.Fragment** is another way to wrap two or more wrapper classes and here we also dont need to create a new file .
 * **React.Fragment** is a buildin wrapper class.
 
-
+## Portals
+* We may have times when we want to render the html elements at the top even if they are nested inside the other html files .
+* We can arrange the html components in the **Elements** of inspect using portals.
+* If any nested element is stored deep inside the files , and we want it outside then portals is the way to go.
+* We can create a variable and store the html elements of the file into it and can use those variables inside the return statements as **React.DOM.createPortal()** .
+* Search more for details.
