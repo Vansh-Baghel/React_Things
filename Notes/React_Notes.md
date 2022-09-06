@@ -39,15 +39,19 @@
 
 ## useState in React
 * useState is one of the **hook** functions and we always use it inside any component but not inside any nested function or outside the component.
-* Whenever we use react , the execution of the files take place only once . Means whenever we want to update any file component (the function which we write) , it doesnt change it.
+* Whenever we use react , the execution of the files take place only once . Means whenever we want to update any file component (the function which we write) , it doesnt change it ie this **('')**.
+* Always give the initial value in the paranthesis.
 * If we want to change anything in JS , we need our executer to go back to the file and read the component again .
-* **useState** here comes into picture , it accepts two arguments (oldName , newName) . The newName can be updated as a function where ever needed.
+* **useState** here comes into picture , it accepts two arguments **(oldName , newName)/(nameStored , newNameAssign)** . The newName can be updated as a function where ever needed.
 * Use destructing of arrays in this to assign variable to both the outputs , one oldValue and second newValue.
 * We cannot update the value using the equal to sign because when we call it as a function then it says the executer to **rerun** the component , which we need.
 
+## useState dependant on prev value
+* Many times we are using previous values so we can append them, therefore whenever our data is dependant on previous values use second argument of useState as a function and pass the storedValue argument (first arg of useState) as arg of this function .
+* Use spread operator to get all the storedValues.
+
 ## Dynamicallyn adding array el
 * We can do this by using map method and avoid manually adding each elements into the file.
-
 
 # Chp 6
 ## Styled components
@@ -69,4 +73,14 @@
 * This is a way to find many informations like linking of files , find the text , get the id , props , function name , etc etc .
 * Download react dev tools extension from google and visit **Components** in the lists of console dropdown.
 
+## Function inside function
+* While using a normal function as a callback function (means used under our file function) , then we dont use paranthesis because we dont want to execute the function as soon as it reaches the line but rather want to make it used whenever required.
 
+## Blank the input field
+* When we want our input field to blank after submission , make sure to give input HTML element the **value** attribute.
+* This will store the oldValue in it , and then we can change the new value to blank string ie **newValueVariable('')**.
+
+## Lifting State Up
+* When we want to connect two sibling components , then we find a common file to connect the two files .
+* We use the data from that common file which acts as middle file between the two.
+* This helps us to maintain small components of a big file. 
