@@ -114,11 +114,19 @@
 
 # Chp 10
  
-## useEffect
+## useEffect / Side Effect
 * This useState have 2 arguments in which first argument is called an **effect** which is basically a condition and second argument is **dependency** . The effect runs when the dependencies are changed.
+* If we forget to give dependency , then it will crash the website. Empty dependency will run the effect once.
+* useEffect is used in response to whenever we do any **updates, addition of card , etc like whenever we want to perform an action wrt other action** then we must use useEffect.
+
+## Debouncing and CleanUp function
+* This useEffect will execute everytime we update any input field if used that way , like on each letter it'll change , we dont want that because alot of data will be gathered. To solve this we can use **setTimeout()** to set the timer to run the function. This thing is called **Debouncing**.
+* CleanUp function is a return type and is basically any function which will run before every **new** side effect function execution.
+* We have to use clearTimeout to restart the timer for every useEffect function.
 
 ## localStorage
 * We use localStorage to store the key and value .
 * The first argument stores the key and the second argument stores the value when we use **setItem**.
 * We use **getItem** and pass the key name in its parameter.
+* We can also remove the data by using **removeItem**.
 
