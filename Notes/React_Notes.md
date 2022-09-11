@@ -53,7 +53,7 @@
 ## Dynamicallyn adding array el
 * We can do this by using map method and avoid manually adding each elements into the file.
 
-# Chp 6
+# Chp 6 , 7 , 8 , 9
 ## Styled components
 * write **npm install --save styled-components** to use it.
 * Then **import** it in files and then we can use it.
@@ -112,5 +112,13 @@
 * We do not send the input value to the react , it is directly passed to the DOM and its then printed.
 * When we use **useState** , we assign the input value and update it using react , therefore it is **Controlled** component.
 
+# Chp 10
+ 
+## useEffect
+* This useState have 2 arguments in which first argument is called an **effect** which is basically a condition and second argument is **dependency** . The effect runs when the dependencies are changed.
 
+## localStorage
+* We use localStorage to store the key and value .
+* The first argument stores the key and the second argument stores the value when we use **setItem**.
+* We use **getItem** and pass the key name in its parameter.
 
