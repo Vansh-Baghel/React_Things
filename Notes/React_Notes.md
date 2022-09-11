@@ -80,6 +80,9 @@
 * When we want our input field to blank after submission , make sure to give input HTML element the **value** attribute.
 * This will store the oldValue in it , and then we can change the new value to blank string ie **newValueVariable('')**.
 
+## Removing the error module on click 
+* To remove the error msg by clicking on any button or the backdrop , we need to give the **onClick** effect on the ErrorModal js file which will create and must assign **props.anyName** and then use this name (anyName here) in the **ErrorModal** Component where it'll be used.
+
 ## Lifting State Up
 * When we want to connect two sibling components , then we find a common file to connect the two files .
 * We use the data from that common file which acts as middle file between the two.
