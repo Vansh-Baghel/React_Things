@@ -104,4 +104,5 @@
 
 ## useRef
 * We can use useRef to always quickly display any value inside the console .
+* We can use it like **assignedName.current.value** to get the value of any input or any html element where we use ref.
 * Otherwise we have to use useState for it. If we dont want any changes , then we must use **useRef** else **useState** is also good.
