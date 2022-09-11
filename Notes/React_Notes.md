@@ -106,3 +106,11 @@
 * We can use useRef to always quickly display any value inside the console .
 * We can use it like **assignedName.current.value** to get the value of any input or any html element where we use ref.
 * Otherwise we have to use useState for it. If we dont want any changes , then we must use **useRef** else **useState** is also good.
+
+## Uncontrolled & Controlled components 
+* Whenever we use **ref** for the input types , we have the **Uncontrolled** components because it is not controlled by React .
+* We do not send the input value to the react , it is directly passed to the DOM and its then printed.
+* When we use **useState** , we assign the input value and update it using react , therefore it is **Controlled** component.
+
+
+
