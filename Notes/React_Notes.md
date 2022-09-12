@@ -121,7 +121,7 @@
 
 ## Debouncing and CleanUp function
 * This useEffect will execute everytime we update any input field if used that way , like on each letter it'll change , we dont want that because alot of data will be gathered. To solve this we can use **setTimeout()** to set the timer to run the function. This thing is called **Debouncing**.
-* CleanUp function is a return type and is basically any function which will run before every **new** side effect function execution.
+* **CleanUp function** is a return type and is basically any function which will run before every **new** side effect function execution.
 * We have to use clearTimeout to restart the timer for every useEffect function.
 
 ## localStorage
@@ -130,3 +130,5 @@
 * We use **getItem** and pass the key name in its parameter.
 * We can also remove the data by using **removeItem**.
 
+## useReducer Function
+* We can use this as an alternate of useState , and when the useState becomes too much to handle .
