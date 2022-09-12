@@ -135,10 +135,10 @@
 * Whenever we use **useEffect** with useReducer , we can make use of **alias**. By using **alias** , we can specifically mention the object which is used to check the validity (here we check that if the email contains  **@** and if the password is larger than 6 char) for the dependency. So validity could be checked without checking the input type everytime and by just chrcking till the condition is satisfied.
 
 ## useContext method
-* We use **React.createContext** and create a separate file . This file is a separate file which could be used as a component in other files.
-* This file created will be used as a wrapper class and all the child components of that wrapped content will be able to use the wrapper component ka content. To make it work like this , we need to use wrapperComponent.**Provider** which will do the work. 
+* We use **React.createContext** and create a separate file .
+* This file created will be used as a wrapper class and all the child components of that content will be able to use the wrapper component ka content (ie the file which has React.createContext). To make it work like this , we need to use wrapperComponent.**Provider** which will do the work. 
 * To use the data of the wrapper class, we have to read it first which is done by assigning **useContext** to it in the file where we want it to use.
-* Basically **useContext** is stored in a variable and this variable help us to get access of any object which we write in the paranthesis . We pass the component which will be commonly used in other components as well . Just by using useContext , we can use any component in any file.
+* Basically **useContext** is stored in a variable and this variable help us to get access of any object which we write in the paranthesis . We pass the component which will be commonly used in other components as well . Just by using useContext , we can **use any component in any file**.
 * This method is used whenever we want a certain component in many different components. This will avoid **Uplifting** many times and make our code cleaner.
 
 
