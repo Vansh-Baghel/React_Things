@@ -132,3 +132,9 @@
 
 ## useReducer Function
 * We can use this as an alternate of useState , and when the useState becomes too much to handle .
+* Whenever we use **useEffect** with useReducer , we can make use of **alias**. By using **alias** , we can specifically mention the object which is used to check the validity (here we check that if the email contains  **@** and if the password is larger than 6 char) for the dependency. So validity could be checked without checking the input type everytime and by just chrcking till the condition is satisfied.
+
+## useContext method
+* This method is used whenever we want a certain component in many different components. It makes 
+* 
+
