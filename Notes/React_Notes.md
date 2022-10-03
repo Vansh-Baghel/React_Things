@@ -104,6 +104,7 @@
 
 ## useRef
 * We can use useRef to always quickly display any value inside the console .
+* It always returns the string value , so to change it to int whereever necessary , we can use **+varName**.
 * We can use it like **assignedName.current.value** to get the value of any input or any html element where we use ref.
 * Otherwise we have to use useState for it. If we dont want any changes , then we must use **useRef** else **useState** is also good.
 
@@ -141,4 +142,4 @@
 * Basically **useContext** is stored in a variable and this variable help us to get access of any object which we write in the paranthesis . We pass the component which will be commonly used in other components as well . Just by using useContext , we can **use any component in any file**.
 * This method is used whenever we want a certain component in many different components. This will avoid **Uplifting** many times and make our code cleaner.
 
-
+## 
