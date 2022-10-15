@@ -142,4 +142,46 @@
 * Basically **useContext** is stored in a variable and this variable help us to get access of any object which we write in the paranthesis . We pass the component which will be commonly used in other components as well . Just by using useContext , we can **use any component in any file**.
 * This method is used whenever we want a certain component in many different components. This will avoid **Uplifting** many times and make our code cleaner.
 
-## 
+# React Beh
+## Rendering the DOM != Rendering Component
+* Whenever we use any state, we **re-render** the whole component. For EG: - If we are using useState in Cart.js then the whole Cart.js will be refreshed whenever that useState function is triggered by some action. 
+* Behind the scene , it just add the particular line in the HTML and rest of the code is **not re-run** and they remain unchanged.
+* This re-evaluations are bad because all the **child components will also get re-rendered** when we use useState and this creates alot of performance problem sometimes .
+> Whenever components are re-rendered , everything which is created is new . All the methods , states , variables , etc .
+* In the above point , if the child components have their child too , then those will also be re-rendered.
+
+## React.memo
+* To avoid the re-rendering of a particular child component on useState , we can use this method .
+* We have to use this in **export line** so that it stops re-rendering of those components and also their child components. 
+* This method compares the **previous state to the current state** so its not a good use for the components which are anyways going to change after state because it will **cost the optimization** of comparing the old state to new state.  
+* The component will **anyway run if its props are changing** after change in state even if we use React.memo . This will result in less performance we are comparing the old and new state by React.memo and also running the same component.
+> ONE ISSUE: - The callback functions will always run even if we use React.memo . Explanation in useCallback()
+
+## useCallback()
+* The concept in JS is like: - 
+```JS
+'hi' === 'hi'           // True
+[1,2,3] === [1,2,3]     // False
+let obj1 = {}; 
+let obj2 = {}; 
+obj1 === obj2           // False
+obj1 = obj2
+obj1 === obj2           // True
+```
+
+* All the primitive datatypes when compared in this way , gives us true and other than it , if we try to use Array , object then those will give false.
+* If we have a callback function defined in component , then the **previousState and currentState wont be equal** because even methods are never equal so using React.memo doesn't make any sense in here because it will just compare the old and new state and still will anyway run the component which will take **extra performance** .
+* To solve this , we have useCallback() . This will return the **old function** itself rather than creating a new function on **re-render** . Also we know that re-render re-creates all the content of the component rather than using the previous content.
+* Sometimes we might want a function to be updated whenever changed , so for that , we have to mention useState initial value in the useCallback() function.
+* In the further example , changeHandler will change whenever its state will be changed , else it will remain unchanged.
+
+```JS
+const [changeName , setChangeName] = useState(false);
+
+const changeHandler = useCallback(() ={
+    if (changeName){
+        setChangeName(prevName => !prevName);
+    }
+},[changeName]);
+```
+
