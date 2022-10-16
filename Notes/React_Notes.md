@@ -104,9 +104,17 @@
 
 ## useRef
 * We can use useRef to always quickly display any value inside the console .
+* Avoid using innerHTML , innerText , etc properties using **document.** , replace it with **useRef** . 
 * It always returns the string value , so to change it to int whereever necessary , we can use **+varName**.
 * We can use it like **assignedName.current.value** to get the value of any input or any html element where we use ref.
 * Otherwise we have to use useState for it. If we dont want any changes , then we must use **useRef** else **useState** is also good.
+
+```JS
+  const inputRef = useRef();
+//   To see all the properties of useRef.
+    console.log(inputRef);
+    console.log(inputRef.current.innerHTML);
+```
 
 ## Uncontrolled & Controlled components 
 * Whenever we use **ref** for the input types , we have the **Uncontrolled** components because it is not controlled by React .
@@ -142,13 +150,45 @@
 * Basically **useContext** is stored in a variable and this variable help us to get access of any object which we write in the paranthesis . We pass the component which will be commonly used in other components as well . Just by using useContext , we can **use any component in any file**.
 * This method is used whenever we want a certain component in many different components. This will avoid **Uplifting** many times and make our code cleaner.
 
-# React Beh
+# 12. React Behind the Scenes
 ## Rendering the DOM != Rendering Component
 * Whenever we use any state, we **re-render** the whole component. For EG: - If we are using useState in Cart.js then the whole Cart.js will be refreshed whenever that useState function is triggered by some action. 
 * Behind the scene , it just add the particular line in the HTML and rest of the code is **not re-run** and they remain unchanged.
 * This re-evaluations are bad because all the **child components will also get re-rendered** when we use useState and this creates alot of performance problem sometimes .
 > Whenever components are re-rendered , everything which is created is new . All the methods , states , variables , etc .
 * In the above point , if the child components have their child too , then those will also be re-rendered.
+
+## State Scheduling & updates and an explanation 
+```JS
+const [number , setNumber] = useState(false);
+
+// Wrong method .
+const numberChangeHandler = () => {
+    useState(!number);      
+}
+
+// Right method .
+const numberChangeHandler = () => {
+    useState(prevNumber => !prevNumber); 
+}
+```
+* Why is one method correct and other is not , lets see .
+* States are updated in order but not instantly , there are other priorities which will be executed before any state update. Like EG: -
+```JS
+const [forst , setForst] = useState('');
+const [rias , setrias] = useState('');
+
+setForst("We gonna make it bruh");
+setForst("Be proud , not satisfied man");
+// code 
+xyz.getInput(abc Code);
+```
+In the above example , if the priority of getInput function is more then it'll run before both states , but the order of state running is the same ie setForst will run first and then setrias.
+
+* Whenever we change states , the **component is re-rendered**. Imagine we have multiple state changes . So there is a chance that in single re-rendering , **multple states are changing** being dependent on the previous state snapshot.
+* So there could be a possibility that the next state is not getting the latest state from previous state change because **both might be changing at the same time** , therefore both will receive the old latest state snapshot.
+* When we use correct method , it will ensure that the change which is to be made is received from the latest state snapshot.
+* States under same function block will **re-render the component at the same time** and wait for each other .
 
 ## React.memo
 * To avoid the re-rendering of a particular child component on useState , we can use this method .
@@ -185,3 +225,21 @@ const changeHandler = useCallback(() ={
 },[changeName]);
 ```
 
+# 14. Sending HTTP reqs & API
+## async await
+* It is same as that we use in JS. 
+```JS
+async function xyzHandler() {
+    const response = await fetch(`API_Url`)
+    const data = await response.json();
+
+    const getData = data.map or whatever
+}
+```
+* The above example can be used in attribute like **button onClick** and etc to trigger it .
+* We might also want our API to send req **as soon as page starts loading**, and for that, we must use **useEffect**.
+* In useEffect , when we write dependency , we can simply leave it empty which will say the React that fetch API only once when the component is loaded.
+* When we write any function name in dependency then it means that the **data will be fetched whenever that function is re-rendered**. If the function does not have any external state in it , we dont need to reload the fetch unnecessarily.
+
+## Sending request to Backend
+* We can even post some data in the backend and use them according to get the same data.
