@@ -1,0 +1,10 @@
+.Card{
+    padding: 2rem;
+    background-color: purple;
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+    margin: auto;
+    width: 50%;
+    border-radius: 7%;
+}
