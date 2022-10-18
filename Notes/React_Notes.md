@@ -229,6 +229,7 @@ const changeHandler = useCallback(() ={
 ## async await
 * It is same as that we use in JS. 
 ```JS
+
 async function xyzHandler() {
     const response = await fetch(`API_Url`)
     const data = await response.json();
@@ -243,3 +244,50 @@ async function xyzHandler() {
 
 ## Sending request to Backend
 * We can even post some data in the backend and use them according to get the same data.
+* While using firebase , dont forget to put **/tasks.json** after the url .
+
+# 15. Building Custom Hooks
+
+## Rules 
+* The name of hooks must start from **use** .
+* It can **use other builtin hoooks** in it .
+* It can **return anything** like array , object , variable or number which we can use as **destructing** .
+* Make custom hooks when you see **same code getting repeated** just for small change . 
+
+## Information about custom hooks
+* These are just normal functions which can have parameters.
+* We can use **boolean value** or anything in parameters and can **write logic** of custom hook **according to parameter** , ie , if its false then do this otherwise do that . 
+* In this way , we **dont need to hardcode** anything just for specific change . 
+* We can set a default state to the parameter.
+
+## Setting default value of objects
+* When we want any object to exist in some case and not in some, then surely we need an understanding to give the condition.
+```JS
+const useHttp = (requestConfig , applyData) => {
+
+  const sendRequest = async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(requestConfig.url, {
+        method:requestConfig.method ? requestConfig.method : 'GET',
+        headers:requestConfig.headers ? requestConfig.headers : '',
+        body:requestConfig.body ? requestConfig.body : null
+      }
+    }
+  }
+}
+```
+Here , we are setting the default value if there exist no such parameter which calling useHttp and this will mean that we **dont want to post** the data , rather we **want to get the data**.
+
+# 16. Input forms
+## 3 Types to handle error
+* In first , we can handle the error once the **form is submitted**.
+* In second , we can handle the error once the input field **loses focus**.
+* In third , we can handle the error while **user is typing** .
+
+## useRef VS useState 
+* When we just want the value to be consoled once after submission , then useRef is better.
+* When we want to read value after every keystroke then useState is better because we cant do that with useRef.
+* When we want to empty the written input field , we must use useState and provide value attribute to the input tag with the variable name of the useState.
+* We can also empty input using ref , but we must not do it because we are directly changing the DOM and its not recommended to change DOM ourselves , changing DOM is work of React.
