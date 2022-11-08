@@ -1,3 +1,13 @@
+# Framework VS Library
+
+- ReactJs is a library whereas AngularJs is a framework.
+
+| Framework                                                                                            | Library                                                                                    |
+| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| It is difficult to replace frameworks                                                                | A library is easy to be replaced with another library.                                     |
+| A framework development requires a lot of code that decrease performance and increase the load time. | Building a library requires less code , so there is better performance and fast load time. |
+|	Its example are AngularJS , Spring , NodeJS , etc.       |Its example are JQuery , React JS , etc.        | 
+
 # Chp 2
 
 ## JSX
@@ -410,12 +420,14 @@ Here , we are setting the default value if there exist no such parameter which c
 
 - This is a hook available in React Router and it accepts on **object parameter** . eg:-
 - Using **semicolon** is important to set the path.
-- It indicates that if the part ahead of it changes , then add that path in url using **useParams**.    
+- It indicates that if the part ahead of it changes , then add that path in url using **useParams**.
+
 ```JS
 In App.js , <Route path="/movies/:type" element={<MoviesList />}></Route>
 
 In MoviesList , const {type} = useParams();
 ```
+
 - Whenever the **param changes** , we can load **new content** . This is **done inside the useEffect** because useEffect helps to make changes when one hook is dependent on another.
 
 # Adjusting image size
@@ -423,6 +435,21 @@ In MoviesList , const {type} = useParams();
 - We cannot decrease or increase the html **img** tag , because it will just **zoom** the image.
 - If we want the size of image to be decreased , **wrap it into the div**.
 
-# FA icons 
-* It could be used after importing the script in the index.html file.
-* We can use newTab to keep some distance in the icons and the text.
+# FA icons
+
+- It could be used after importing the script in the index.html file.
+- We can use newTab to keep some distance in the icons and the text.
+
+# Default export
+* Export can only be used once with default keyword in a module. 
+* User can change the name while importing.
+
+# export without default
+* User cannot change the name , name of module will be the same as it was exported.
+* To change the name , we can use **as** keyword like 
+```JS
+
+import { example as widgetExample } from "./widget/example";
+
+```
+* There can be multiple exports.
