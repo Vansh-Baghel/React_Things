@@ -6,7 +6,7 @@
 | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | It is difficult to replace frameworks                                                                | A library is easy to be replaced with another library.                                     |
 | A framework development requires a lot of code that decrease performance and increase the load time. | Building a library requires less code , so there is better performance and fast load time. |
-|	Its example are AngularJS , Spring , NodeJS , etc.       |Its example are JQuery , React JS , etc.        | 
+| Its example are AngularJS , Spring , NodeJS , etc.                                                   | Its example are JQuery , React JS , etc.                                                   |
 
 # Chp 2
 
@@ -441,15 +441,92 @@ In MoviesList , const {type} = useParams();
 - We can use newTab to keep some distance in the icons and the text.
 
 # Default export
-* Export can only be used once with default keyword in a module. 
-* User can change the name while importing.
+
+- Export can only be used once with default keyword in a module.
+- User can change the name while importing.
 
 # export without default
-* User cannot change the name , name of module will be the same as it was exported.
-* To change the name , we can use **as** keyword like 
+
+- User cannot change the name , name of module will be the same as it was exported.
+- To change the name , we can use **as** keyword like
+
 ```JS
 
 import { example as widgetExample } from "./widget/example";
 
 ```
-* There can be multiple exports.
+
+- There can be multiple exports.
+
+# SVG
+
+- We cannot create nested svgs.
+- Svg have path for different small components / part / pieces .
+- We cannot wrap path in div.
+- If you want to animate any specific part from svg then go to figma and remove all the other paths and keep the one you need and then save that thing into a new svg.
+- Another thing which we can do is replacing the paths of svg means deleting and adding another path which we want . Path changes when we change the direction or color.
+
+# Trick to make ez Responsive
+
+- Use flex on outer div and it will automatically decrease the size of the box before it gets smaller.
+
+# Using Framer-motion
+
+- It is used to add animation in **react-dom**.
+- We have to add it **inside the router** between **routes** , so for that we create a separate component and add it into the App.js because its not directly possible to add a condition between routes.
+- Use npm i framer-motion to install it , and import like by using **import {AnimationPresence} from 'framer-motion/dist/framer-motion'** . It sometimes works **incorrectly** if you **dont mention the dist path**, so better mention it everytime.
+- Add motion by importing it in every file we want that animation.
+- We must use **useLocation hook** for giving the location of different file and use **its variable** as **attribute in** the **Routes**.
+
+I have to link ProjectCard with the url of each page . these url will be same as mentioned in App.js which will take us to that page.
+
+# Redux
+
+- It manages the state for cross-component ie passes the content to multiple components.
+
+## Redux VS useContext
+
+- We already have useContext for this work , well it has few limitations.
+- useContext is **recommended for small web applications** and if the project is too big then there could be a **tough time to manage different states** at the same time because there will be multiple state for handling multiple components .
+- useContext is **not optimized** for high-frequency state changes , ie , if a **certain state is changing constantly** then its **not that fast**.
+
+## Reducer function in Redux
+
+- It is not useReducer , this is reducer function which is does the work same like the inbuilt reduce method of JS .
+- It consists of 2 states : Old State (+ Dispatch action) and always returns New State .
+
+## Dispatch action
+
+- **dispatch()** is an inbuilt method which **dispatches an action**.
+- This action is an **object** which consists of **type property** and type accepts string values and each string must be a **unique value** to dispatch different actions.
+
+## Provider in index.js / App.js
+
+- Provider can be wrapped around App inside index.js so every component in App could use the data of it.
+- We can also wrap specific components with Provider , there's no rule to just wrap the App.js in index.js .
+- store is an inbuilt property of Provide component.
+
+## configureStore
+
+- It is used to store our data .
+
+* Store them inside **reducer property** which is predefined.
+
+```JS
+const reduxStore = configureStore({
+  reducer: {
+    count: counterReducer,
+  },
+});
+```
+
+## useSelector
+
+- Used to manage a part of a state which is to be passed in another component.
+- We have to pass a state and state which we want to extract.
+- Store it in destructured object .
+
+```JS
+  const {counter} = useSelector((state) => state.count);
+
+```
