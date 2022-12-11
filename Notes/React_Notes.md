@@ -522,13 +522,40 @@ const reduxStore = configureStore({
 
 ## useSelector
 
-- Used to manage a part of a state which is to be passed in another component.
-- We have to pass a state and state which we want to extract.
-- Store it in destructured object .
+- Used to **manage a part of a state** which is to be **passed in another component**.
+- We have to **pass a state** and state which we want to extract.
+* We use the properties which are defined in different component.
 
 ```JS
-  const {counter} = useSelector((state) => state.count);
+  const counter = useSelector((state) => state.count);
 
+```
+
+## createSlice
+* It consists of objects which must contain some **initialState** and an **inbuilt reducers method** where we can define our handler functions.
+* We must **never change the old state** like we used to do with state and action , we must always return new state .
+```JS
+  if (action.type === "decrement") {
+    return {
+      counter: state.counter - 1,
+    };
+  }
+```
+* While using react toolkit , we dont need worry about old states , it contains **imgur** which is inbuilt in react toolkit .
+* imgur **creates a copy behind the scenes of old state** whenever we change the state.
+* It **reduces the line of codes** and it **saves alot of time**.
+```JS
+const counterSlice = createSlice({
+  name: "counter",
+  // We need initialState to use counter and showCounter properties .
+  initialState, 
+  reducers: {
+    increment(state) {state.counter++},
+    decrement(state) {state.counter--},
+    increase(state , action) {state.counter = state.counter + action.payload },
+    toggleCounter(state) {state.togCounter = !state.togCounter},
+  },
+});
 ```
 
 # axios 
