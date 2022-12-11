@@ -530,3 +530,10 @@ const reduxStore = configureStore({
   const {counter} = useSelector((state) => state.count);
 
 ```
+
+# axios 
+* It is kinda **advanced version** of **fetching** the data from **API**. 
+* It returns the **data in json format** so we dont need to change .
+* We can perform different operations such as get , post , call , etc .
+* We can also use axios with **async await** too.
+* One of the ways to use axios is that we dont need to write the base url in the current component but make a new component and then import axios from it.
