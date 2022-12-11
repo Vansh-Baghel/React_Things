@@ -3,9 +3,9 @@ import classes from "./Counter.module.css";
 import { counterActions } from "./store/redux-store.js";
 
 const Counter = () => {
-  // counter is the property which we've defined in redux-store in initialState
+  // counter is the property which we've defined in redux-store in initialState . 
   const counter = useSelector((state) => state.counter);
-  
+  // show stores the boolean value which indicates toggle or not.
   const show = useSelector((state) => state.togCounter);
   const dispatch = useDispatch();
 
