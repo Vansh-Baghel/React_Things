@@ -483,6 +483,8 @@ I have to link ProjectCard with the url of each page . these url will be same as
 # Redux
 
 - It manages the state for cross-component ie passes the content to multiple components.
+![redux flow](../Resources/redux.jpeg)
+
 
 ## Redux VS useContext
 
@@ -531,6 +533,41 @@ const reduxStore = configureStore({
 
 ```
 
+## Flow of redux
+* Flow of redux is to create a store , reducer function containing state and action . here state is an object.
+
+## reducers inside createSlice
+* Inbuilt reducers method handles all the actions/cases which is to be handled like toggle , increment , etc.
+* A slice reducer is the reducer responsible for handling actions and updating the data for a given slice.
+
+## actions 
+* Each reducers in createSlice will have corresponding action creator and is included as property of the same function name as the of reducers.
+* Whenever we want to use any reducer in any other component, then we need to import actions and then use it.
+```JS
+// Import actions' variable and write the reducer name.
+import { useDispatch } from 'react-redux';
+  const toggleEventHandler = () => {
+    // where uiActions is, export const uiActions = uiSlice.actions;
+    dispatch(uiActions.toggle)
+  }
+
+```
+```JS
+const uiSlice = createSlice({
+    name: 'ui',
+    initialState : {
+        cartIsVisible : false,
+    },
+    reducers : {
+        toggle(state) {
+            state.cartIsVisible = !state.cartIsVisible;
+        }
+    }  
+})
+
+export const uiActions = uiSlice.actions;
+```
+
 ## createSlice
 * It consists of objects which must contain some **initialState** and an **inbuilt reducers method** where we can define our handler functions.
 * We must **never change the old state** like we used to do with state and action , we must always return new state .
@@ -557,6 +594,58 @@ const counterSlice = createSlice({
   },
 });
 ```
+
+## useDispatch VS useSelector 
+* We use useDispatch() to use any reducers method we've made in createSlice.
+* We use useSelector() to use any initialState object's property which we've made.
+```JS
+// Slice
+const uiSlice = createSlice({
+    name: 'ui',
+    initialState : {
+        cartIsVisible : false,
+    },
+    reducers : {
+        toggle(state) {
+            state.cartIsVisible = !state.cartIsVisible;
+        }
+    }  
+})
+
+// Dispatch
+  const dispatch = useDispatch();
+
+  const toggleEventHandler = () => {
+    dispatch(uiActions.toggle())
+  }
+
+// Selector
+  const showCart = useSelector((state) => state.ui.cartIsVisible)
+
+```
+
+## Flow of ReduxCart project
+* We created **2 slices** (createSlice) and **made their store** in store-index.js file where we used **configueStore** and **created store variable** which we will use in **index.js** to wrap around App component.
+* ui-slice handled the **shopping cart event** by **clicking** on My Cart button.
+* We used **useDispatch** to use any **reducer function** and **useSelector** to use the **properties of initialState** by using the **name of the slice** defined in createSlice .
+* We then created **cart-slice** which handled events like **addingItem** and **removingItem**.
+* If item **exists**, then just **increase the quantity** and **totalPrice** of it and if the item is **new** then **push** all the **information** in the **newItem variable** from exisitingItem so that there's a link between them.
+* Then use these data in the **CartItem, Cart, Product and ProductItem.js** files.
+
+```JS
+const store = configureStore({
+    // this ui is assigned with considering the name of reducer in cart-store.js file.
+    reducer : { ui : uiSlice.reducer , cart : cartSlice.reducer }
+})
+
+export default store;
+```
+
+## Handling sync and async
+![sync and async](../Resources/sync_async_code.jpeg)
+* Async means any http req or res we want to send or receive, so do it in any component rather than in slices.
+> EG : We can fetch the data from firebase and use PUT method and send our data on the backend. This fetch logic must be written in useEffect .
+* Sync means we have data inside our files itself, we dont need any API or http for it, so put its login inside a separate file of slice to keep the components clean, else we need to copy the logic in each component we are using.
 
 # axios 
 * It is kinda **advanced version** of **fetching** the data from **API**. 
